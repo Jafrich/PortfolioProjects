@@ -1,5 +1,5 @@
 
---Viewing the basic statistics of the dataset to get a sense of distribution. 
+-- 𝐕𝐢𝐞𝐰𝐢𝐧𝐠 𝐭𝐡𝐞 𝐛𝐚𝐬𝐢𝐜 𝐬𝐭𝐚𝐭𝐢𝐬𝐭𝐢𝐜𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐝𝐚𝐭𝐚𝐬𝐞𝐭 𝐭𝐨 𝐠𝐞𝐭 𝐚 𝐬𝐞𝐧𝐬𝐞 𝐨𝐟 𝐝𝐢𝐬𝐭𝐫𝐢𝐛𝐮𝐭𝐢𝐨𝐧.
 
 SELECT COUNT(*) AS total_records,
        AVG(age) AS average_age,
@@ -9,7 +9,7 @@ SELECT COUNT(*) AS total_records,
        AVG(estimated_salary) AS average_salary
 FROM dbo.[Bank Customer Churn Prediction];
 
--- Percentage of customers who have left the bank
+-- 𝐏𝐞𝐫𝐜𝐞𝐧𝐭𝐚𝐠𝐞 𝐨𝐟 𝐜𝐮𝐬𝐭𝐨𝐦𝐞𝐫𝐬 𝐰𝐡𝐨 𝐡𝐚𝐯𝐞 𝐥𝐞𝐟𝐭 𝐭𝐡𝐞 𝐛𝐚𝐧𝐤
 
 SELECT churn, COUNT(*) AS count
 FROM dbo.[Bank Customer Churn Prediction]
@@ -27,9 +27,9 @@ SELECT SUM(CAST(churn AS INT)) AS churned_customers,
        (SUM(CAST(churn AS INT)) * 100.0 / COUNT(*)) AS churn_rate_percentage
 FROM dbo.[Bank Customer Churn Prediction];
 
--- 20.37% Churn
+-- 𝟐𝟎.𝟑𝟕% 𝐂𝐡𝐮𝐫𝐧
 
--- Comparing Churn by gender and country
+-- 𝐂𝐨𝐦𝐩𝐚𝐫𝐢𝐧𝐠 𝐂𝐡𝐮𝐫𝐧 𝐛𝐲 𝐠𝐞𝐧𝐝𝐞𝐫 𝐚𝐧𝐝 𝐜𝐨𝐮𝐧𝐭𝐫𝐲
 
 SELECT gender, country,
        SUM(CAST(churn AS INT)) AS churned_customers,
@@ -38,7 +38,7 @@ SELECT gender, country,
 FROM dbo.[Bank Customer Churn Prediction]
 GROUP BY gender, country;
 
--- Churn rates based on age
+-- 𝐂𝐡𝐮𝐫𝐧 𝐫𝐚𝐭𝐞𝐬 𝐛𝐚𝐬𝐞𝐝 𝐨𝐧 𝐚𝐠𝐞
 
 SELECT CASE
            WHEN age < 18 THEN 'Under 18'
@@ -66,7 +66,7 @@ ORDER BY CASE
              ELSE 'Over 60'
          END;
 
--- Credit score vs Churn
+-- 𝐂𝐫𝐞𝐝𝐢𝐭 𝐬𝐜𝐨𝐫𝐞 𝐯𝐬 𝐂𝐡𝐮𝐫𝐧
 
 SELECT CASE
            WHEN credit_score < 500 THEN 'Poor'
@@ -84,7 +84,8 @@ GROUP BY CASE
          END;
 
 
--- Churn Analysis by Estimated Salary
+-- 𝐂𝐡𝐮𝐫𝐧 𝐀𝐧𝐚𝐥𝐲𝐬𝐢𝐬 𝐛𝐲 𝐄𝐬𝐭𝐢𝐦𝐚𝐭𝐞𝐝 𝐒𝐚𝐥𝐚𝐫𝐲
+
 SELECT
     CASE
         WHEN estimated_salary < 50000 THEN 'Low'
@@ -103,7 +104,7 @@ GROUP BY
     END;
 
 
--- Churn Analysis by Balance
+-- 𝐂𝐡𝐮𝐫𝐧 𝐀𝐧𝐚𝐥𝐲𝐬𝐢𝐬 𝐛𝐲 𝐁𝐚𝐥𝐚𝐧𝐜𝐞
 
 SELECT
     CASE
